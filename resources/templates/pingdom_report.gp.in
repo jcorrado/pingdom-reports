@@ -1,0 +1,18 @@
+# -*- mode: conf -*-
+set term png nocrop enhanced size 1024,768 font "courier,12"
+set output 'pingdom_report.png'
+set datafile separator tab
+set border 2 front lt black linewidth 1.000 dashtype solid
+set boxwidth 0.5 absolute
+set style fill solid 1 border lt -1
+set pointsize 0.5
+set style data boxplot
+set style boxplot fraction 1.0
+set xtics border out nomirror rotate by -45 autojustify
+set xtics norangelimit
+set ytics border nomirror norotate autojustify
+x = 0.0
+unset key
+set title "{{ title }}"
+set ylabel "ms"
+plot '<cat' using (0):2:(0):1 lt rgb "{{ color }}"
